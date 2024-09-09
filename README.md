@@ -1,4 +1,4 @@
-Link menuju aplikasi PWS yang sudah di-deploy : https://naira-shafiqa-naiexpress.pbp.cs.ui.ac.id/
+Link menuju aplikasi PWS yang sudah di-deploy : http://naira-shafiqa-naiexpress.pbp.cs.ui.ac.id/
 
 # Jawaban Pertanyaan Tugas 2
 
