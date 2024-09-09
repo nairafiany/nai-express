@@ -1,11 +1,108 @@
-<h1>NaiExpress</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'images/shopping.png' %}"
+    />
+    <title>{{ website_title }}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      h1 {
+        text-align: center;
+        color: #fff;
+        background-color: #364658;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      h5 {
+        margin-bottom: 10px;
+        color: #007bff;
+        font-size: 18px;
+      }
+      p {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: #555;
+      }
+      .price {
+        font-weight: bold;
+        color: #28a745;
+        font-size: 18px;
+      }
+      .description {
+        font-style: italic;
+        color: #666;
+      }
+      .availability {
+        color: #ff5722;
+        font-size: 14px;
+      }
+      .discount {
+        color: #dc3545;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      img {
+        display: block;
+        max-width: 200px;
+        height: auto;
+        margin: 20px auto;
+      }
+      .product {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to {{ website_title }}</h1>
+      <p>Created by: {{ owner_name }} ({{ class_name }})</p>
 
-<h5>Nama:</h5>
-<p>{{ name }}</p>
-<p></p>
-<h5>Harga:</h5>
-<p>{{ price }}</p>
-<p></p>
-<h5>Deskripsi:</h5>
-<p>{{ description }}</p>
-<p></p>
+      {% for product in products %}
+      <div class="product">
+        <h5>Nama:</h5>
+        <p>{{ product.name }}</p>
+
+        <h5>Harga:</h5>
+        <p class="price">{{ product.price }}</p>
+
+        <h5>Deskripsi:</h5>
+        <p class="description">{{ product.description }}</p>
+
+        <h5>Ketersediaan:</h5>
+        <p class="availability">{{ product.availability }}</p>
+
+        <h5>Stok:</h5>
+        <p>{{ product.stock }} unit</p>
+
+        <h5>Diskon:</h5>
+        <p class="discount">{{ product.discount }}</p>
+
+        <img src="{% static product.image %}" alt="{{ product.name }} Image" />
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
