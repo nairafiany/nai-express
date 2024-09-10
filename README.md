@@ -225,7 +225,7 @@ Jawaban :
 
 Referensi : https://dev.to/msnmongare/mastering-django-now-a-comprehensive-guide-from-beginner-to-advanced-4b2d
 
-## Pertanyaan 4
+## Pertanyaan 5
 
 _Mengapa model pada Django disebut sebagai ORM?_
 
