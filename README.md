@@ -54,7 +54,7 @@ Pada tahap ini, saya menyiapkan _environment_ untuk proyek Django agar dapat ber
    Saya perlu menambahkan `ALLOWED_HOSTS` di `settings.py` agar proyek bisa berjalan di `localhost` dan domain yang ditentukan situs PBP:
 
    ```python
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress.pbp.cs.ui.ac.id"]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"]
    ```
 
 ### Step 2: Membuat Aplikasi dan Konfigurasi (MTV) Proyek
