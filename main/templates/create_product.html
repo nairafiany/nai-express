@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block content %}
+<div class="pricing-header px-3 py-3 mx-auto text-center">
+  <div class="service-header px-3 py-3 mx-auto text-center">
+    <h1 class="h3">Add Your Products</h1>
+    <p class="lead">Please, fill in the forms</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h4 class="mb-3">Product Information</h4>
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="name">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Product Name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="description">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            placeholder="Product Description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="price">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="price"
+            placeholder="Price"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="stock">Stock</label>
+          <input
+            type="number"
+            class="form-control"
+            id="stock"
+            name="stock"
+            placeholder="Stock"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="image">Product Image</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="image"
+            name="image"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="availability">Availability</label>
+          <select class="custom-select" id="availability" name="availability">
+            <option value="">Choose...</option>
+            <option value="In Stock">In Stock</option>
+            <option value="Out of Stock">Out of Stock</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="discount">Discount (%)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="discount"
+            name="discount"
+            placeholder="Discount"
+          />
+        </div>
+
+        <hr class="mb-4" />
+        <button class="btn btn-lg btn-block mb-4" type="submit">
+          Add Product
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

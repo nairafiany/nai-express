@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"] 
 
-
+CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id", "https://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id/"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'nai_express.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
