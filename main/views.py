@@ -23,6 +23,8 @@ def create_product(request):
         if form.is_valid():
             form.save()  
             return redirect('main:show_main') 
+        else:
+            return render(request, "create_product.html", {'form':form})
     else:
         form = ProductForm()
 

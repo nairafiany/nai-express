@@ -10,81 +10,43 @@
       <h4 class="mb-3">Product Information</h4>
 
       <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+        {% csrf_token %} {{ form.non_field_errors }}
+
         <div class="mb-3">
           <label for="name">Product Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            placeholder="Product Name"
-          />
+          {{ form.name.errors }} {{ form.name }}
         </div>
 
         <div class="mb-3">
           <label for="description">Description</label>
-          <textarea
-            class="form-control"
-            id="description"
-            name="description"
-            placeholder="Product Description"
-          ></textarea>
+          {{ form.description.errors }} {{ form.description }}
         </div>
 
         <div class="mb-3">
           <label for="price">Price</label>
-          <input
-            type="number"
-            class="form-control"
-            id="price"
-            name="price"
-            placeholder="Price"
-          />
+          {{ form.price.errors }} {{ form.price }}
         </div>
 
         <div class="mb-3">
           <label for="stock">Stock</label>
-          <input
-            type="number"
-            class="form-control"
-            id="stock"
-            name="stock"
-            placeholder="Stock"
-          />
+          {{ form.stock.errors }} {{ form.stock }}
         </div>
 
         <div class="mb-3">
           <label for="image">Product Image</label>
-          <input
-            type="file"
-            class="form-control-file"
-            id="image"
-            name="image"
-          />
+          {{ form.image.errors }} {{ form.image }}
         </div>
 
         <div class="mb-3">
           <label for="availability">Availability</label>
-          <select class="custom-select" id="availability" name="availability">
-            <option value="">Choose...</option>
-            <option value="In Stock">In Stock</option>
-            <option value="Out of Stock">Out of Stock</option>
-          </select>
+          {{ form.availability.errors }} {{ form.availability }}
         </div>
 
         <div class="mb-3">
           <label for="discount">Discount (%)</label>
-          <input
-            type="number"
-            class="form-control"
-            id="discount"
-            name="discount"
-            placeholder="Discount"
-          />
+          {{ form.discount.errors }} {{ form.discount }}
         </div>
 
-        <hr class="mb-4" />
         <button class="btn btn-lg btn-block mb-4" type="submit">
           Add Product
         </button>

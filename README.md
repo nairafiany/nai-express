@@ -236,3 +236,114 @@ Django Web Framework sudah menyertakan **Object-Relational Mapping (ORM)**, yang
 ORM itu sendiri adalah singkatan dari Object-Relational Mapping, yaitu sebuah teknik yang memetakan model-model objek dalam kode Python ke tabel-tabel dalam basis data relasional. Hal ini berarti, data dapat diolah menggunakan objek-objek Python tanpa perlu menulis perintah SQL secara manual. Misalnya, ketika kita ingin mengambil data dari tabel, cukup lakukan query menggunakan Python, dan ORM akan menerjemahkannya menjadi perintah SQL yang sesuai.
 
 Referensi : https://www.scaler.com/topics/django/django-orm/
+
+# Jawaban Pertanyaan Tugas 3
+
+## Pertanyaan 1
+
+_Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?._
+
+Jawaban :
+Data delivery diperlukan dalam pengimplementasian sebuah platform karena:
+
+Data delivery diperlukan dalam pengimplementasian sebuah platform karena memungkinkan website untuk menerima input dari pengguna, memprosesnya, dan menyimpannya di dalam database. Ketika pengguna meminta data tersebut, kita hanya perlu memanggil fungsi yang akan mengambil dan menyajikan data sesuai permintaan. Dengan data delivery yang tepat, platform dapat mengelola pengiriman dan penyajian data secara efisien dan aman, memastikan bahwa data yang diberikan konsisten dan up-to-date.
+
+Selain itu, data delivery juga penting untuk menjaga responsivitas dan ketersediaan platform, terutama saat melayani banyak pengguna secara bersamaan. Dengan strategi data delivery yang baik, platform dapat menangani permintaan yang tinggi tanpa menurunkan performa atau mengalami lag. Misalnya, sistem real-time seperti website e-commerce yang membutuhkan pengiriman data yang cepat dan akurat untuk menjaga interaksi pengguna tetap mulus​
+
+## Pertanyaan 2
+
+_Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?_
+
+Jawaban :
+
+Menurut saya pribadi, **JSON lebih baik dibandingkan XML** dalam konteks pengembangan aplikasi web, dan ada beberapa alasan mengapa JSON lebih sering digunakan:
+
+1. **Kemudahan Parsing**
+
+   JSON dapat langsung diuraikan (parsed) oleh JavaScript dengan mudah, karena merupakan format native yang didukung oleh browser modern. Tidak memerlukan parser khusus seperti halnya XML, sehingga membuat JSON lebih cepat dan praktis dalam penggunaan di aplikasi web.
+
+2. **Ringkas dan Lebih Mudah Dibaca**
+
+   JSON tidak menggunakan tag pembuka dan penutup seperti XML, sehingga membuat data lebih ringkas dan mudah dibaca. Dalam aplikasi web, ini sangat penting karena mempengaruhi kecepatan pengiriman dan penerimaan data antara server dan klien​.
+
+3. **Efisiensi Ukuran File**
+
+   Karena JSON menggunakan format yang lebih sederhana, ukuran file data yang ditransfer lebih kecil dibandingkan XML. Ini mempercepat proses pertukaran data di aplikasi web, yang sering kali membutuhkan efisiensi tinggi terutama dalam koneksi jaringan.
+
+4. **Dukungan untuk Array**
+
+   Dalam aplikasi web, penggunaan array sangat umum, dan JSON mendukung array secara langsung, membuatnya lebih mudah untuk memproses data yang berbentuk daftar atau kumpulan objek. XML, di sisi lain, tidak memiliki dukungan native untuk array, sehingga memerlukan struktur tambahan.
+
+Referensi : https://aws.amazon.com/compare/the-difference-between-json-xml/
+https://www.w3schools.com/js/js_json_xml.asp
+
+## Pertanyaan 3
+
+_Jelaskan fungsi dari method `is_valid()` pada form Django dan mengapa kita membutuhkan method tersebut?_
+
+Jawaban :
+
+Method `is_valid()` pada form Django berfungsi untuk **memvalidasi data yang dikirimkan** melalui form. Ketika form terikat dengan data (bound form), `is_valid()` akan menjalankan semua aturan validasi yang didefinisikan di form, seperti validasi tipe data atau apakah field wajib sudah diisi. Hasilnya adalah nilai boolean: **True** jika data yang dimasukkan valid, dan **False** jika ada kesalahan pada data.
+
+Alasan mengapa kita membutuhkan `is_valid()` adalah:
+
+1. **Mencegah Penyimpanan Data yang Tidak Valid**: Dengan menggunakan `is_valid()`, kita bisa memastikan bahwa hanya data yang valid yang akan disimpan ke dalam database. Ini penting untuk mencegah terjadinya error atau inkonsistensi dalam sistem.
+
+2. **Menangani Error Secara Efektif**: Jika data tidak valid, `is_valid()` akan mengembalikan False, dan Django akan menyediakan informasi tentang kesalahan tersebut melalui atribut `form.errors`. Ini membantu dalam menampilkan pesan kesalahan yang relevan kepada pengguna dan memungkinkan mereka memperbaiki input mereka.
+
+3. **Validasi Terpusat**: Django memudahkan pengembang dengan mengatur validasi data di satu tempat (form), sehingga kode lebih bersih dan lebih mudah dipelihara dibandingkan memvalidasi data secara manual di berbagai bagian aplikasi.
+
+Dengan demikian, `is_valid()` adalah komponen inti yang memastikan bahwa data yang diterima oleh form sesuai dengan persyaratan yang ditentukan, serta membantu aplikasi mengelola input pengguna dengan lebih aman dan terstruktur.
+
+Referensi : https://docs.djangoproject.com/en/5.1/ref/forms/api/
+
+## Pertanyaan 4
+
+_Mengapa kita membutuhkan `csrf_token` saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan `csrf_token` pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?_
+
+Jawaban :
+
+`csrf_token` dibutuhkan dalam form Django untuk melindungi aplikasi web dari serangan Cross-Site Request Forgery (CSRF). CSRF adalah kerentanan keamanan web yang memungkinkan penyerang membuat pengguna tanpa sadar melakukan tindakan yang tidak mereka niatkan pada sebuah situs web. Serangan ini memungkinkan penyerang untuk mengeksploitasi sesi pengguna yang sudah diautentikasi dan mengirimkan permintaan yang tampaknya sah dari pengguna tersebut.
+
+Jika tidak ada csrf_token, ini berarti penyerang dapat :
+
+1. Mengambil alih akun pengguna: Penyerang bisa mengirimkan permintaan yang terlihat sah (seperti mengubah kata sandi atau melakukan transaksi) atas nama pengguna yang telah login ke aplikasi.
+
+2. Eksploitasi Sesi Pengguna: Karena browser secara otomatis mengirimkan cookie autentikasi pada setiap permintaan ke server, penyerang dapat menggunakan sesi pengguna yang valid untuk memanipulasi tindakan yang tidak diinginkan.
+   Penyerang dapat membuat halaman web jahat yang mengirimkan permintaan POST ke aplikasi Django yang tidak terlindungi. Karena browser korban masih memiliki sesi yang valid dengan server, permintaan tersebut akan tampak sah bagi server, sehingga permintaan tersebut dieksekusi tanpa sepengetahuan korban. Tanpa csrf_token, aplikasi tidak memiliki cara untuk memastikan bahwa permintaan berasal dari pengguna yang sah atau dari sumber eksternal yang tidak sah​
+
+Referensi : https://portswigger.net/web-security/csrf
+
+## Pertanyaan 5
+
+_Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)._
+
+Jawaban :
+
+Untuk mengimplementasikan checklist di atas, berikut adalah langkah-langkah yang saya lakukan secara detail :
+
+1. **Membuat Form untuk Input Data**
+   Saya membuat form dengan cara mendefinisikan `forms.py` menggunakan `ModelForm`. Lalu, menghubungkan form tersebut dengan model `Product`.
+2. **Menambahkan Views untuk Menampilkan Data Dalam Format XML dan JSON**
+
+   Saya membuat beberapa fungsi views di `views.py` untuk mengembalikan data dalam formal XML dan JSON berdasarkan ID.
+
+3. **Routing URL**
+
+   Saya menambahkan route URL di `urls.py` untuk mengakses view yang sudah saya buat.
+
+4. **Validasi dan Penggunaan Method `is_valid()`**
+   Saat menerima input dari form, saya memvalidasi validasi sebelum menyimpan data ke database.
+
+5. **Menambahkan CSRF Token**
+   Hal ini dilakukan untuk mencegah serangan CSRF. Ini dilakukan dengan memasukkan `{% csrf_token %}`
+
+6. **Testing dengan Postman**
+   Memastikan bahwa data terkirim dan ditampilkan dengan benar.
+
+## Dokumentasi Postman
+
+![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 033730.png>)
+![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 033759.png>)
+![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 034007.png>)
+![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 034017.png>)
