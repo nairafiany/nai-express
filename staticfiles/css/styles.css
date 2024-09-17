@@ -1,0 +1,49 @@
+body {
+  background-color: #e1d7b7;
+  color: #1e2a5e;
+  font-family: "Poppins", sans-serif;
+}
+nav {
+  background-color: #1e2a5e;
+}
+
+button {
+  background-color: #55679c;
+  color: #e1d7b7;
+}
+
+button:hover {
+  background-color: #7c93c3;
+  color: #1e2a5e;
+}
+
+.table-custom {
+  background-color: #f8f9fa;
+  color: #1e2a5e;
+}
+
+.table-custom thead {
+  background-color: #55679c;
+  color: #e1d7b7;
+}
+
+.table-custom tbody tr:hover {
+  background-color: #7c93c3;
+}
+
+.table-custom tbody tr:nth-child(even) {
+  background-color: #e1d7b7;
+}
+
+.table-custom tbody tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+.btn-rounded {
+  border-radius: 50%;
+}
+
+.btn-extra-small {
+  font-size: 10px;
+  padding: 2px 6px;
+}
