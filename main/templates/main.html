@@ -9,11 +9,11 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <div class="service-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Nai Express</h1>
-    <p class="lead">
+    <!-- <p class="lead">
       No other service is like Nai Express—because when others say 'nah,' we say
       'Nai!' 🚀
     </p>
-    <p class="lead">Nai straight at your service, faster than you can blink!</p>
+    <p class="lead">Nai straight at your service, faster than you can blink!</p> -->
   </div>
 
   <hr style="border-top: 1px solid #bbb; width: 80%; margin: 20px auto" />
@@ -77,6 +77,11 @@
       <a href="{% url 'main:create_product' %}">
         <button class="btn btn-sm">Add New Product</button>
       </a>
+      <a href="{% url 'main:logout' %}">
+        <button>Logout</button>
+      </a>
+
+      <h5>Sesi terakhir login: {{ last_login }}</h5>
     </div>
     {% endblock %}
   </div>

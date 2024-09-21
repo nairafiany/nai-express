@@ -347,3 +347,35 @@ Untuk mengimplementasikan checklist di atas, berikut adalah langkah-langkah yang
 ![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 033759.png>)
 ![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 034007.png>)
 ![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 034017.png>)
+
+# Jawaban Pertanyaan Tugas 2
+
+## Pertanyaan 1
+
+_Apa perbedaan antara HttpResponseRedirect() dan redirect()_
+
+Jawaban :
+
+## Pertanyaan 2
+
+_Jelaskan cara kerja penghubungan model MoodEntry dengan User!_
+
+Jawaban :
+
+## Pertanyaan 3
+
+_Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut._
+
+Jawaban :
+
+## Pertanyaan 4
+
+_Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?._
+
+Jawaban :
+
+## Pertanyaan 5
+
+_Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)._
+
+Jawaban :
