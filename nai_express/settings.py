@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b-wnwi5&=lv5ou@)u-4l&-*807=q+8uzd$tsmwvqjzf62!n=zo'
 
 PRODUCTION = os.getenv("PRODUCTION", False)
-# DEBUG = not PRODUCTION
-DEBUG = True
+DEBUG = not PRODUCTION
+# DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"] 
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id", "https://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"]
@@ -42,13 +42,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'nai_express.urls'
