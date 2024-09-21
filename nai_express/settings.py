@@ -29,7 +29,6 @@ DEBUG = not PRODUCTION
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"] 
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id", "https://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"]
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
