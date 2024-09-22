@@ -40,8 +40,6 @@ def create_product(request):
 
     return render(request, "create_product.html", {'form': form})
 
-
-
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")

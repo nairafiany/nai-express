@@ -5,10 +5,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from main.views import register, login_user, logout_user
 
-
-
-
-
 app_name = 'main'
 
 urlpatterns = [
