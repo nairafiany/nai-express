@@ -16,13 +16,15 @@ from django.urls import reverse
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
+    last_login = request.COOKIES.get('last_login')
 
     context = {
         'website_title': 'Nai Express📦',
         'name': request.user.username,
         'class_name': 'PBP C',
         'products': products, 
-        'last_login': request.COOKIES['last_login'],
+        'last_login': last_login,
+
     }
 
     return render(request, "main.html", context)

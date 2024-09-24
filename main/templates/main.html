@@ -9,16 +9,19 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <div class="service-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Nai Express</h1>
-    <!-- <p class="lead">
+
+    <p class="lead">
       No other service is like Nai Express—because when others say 'nah,' we say
       'Nai!' 🚀
     </p>
-    <p class="lead">Nai straight at your service, faster than you can blink!</p> -->
+    <p class="lead">Nai straight at your service, faster than you can blink!</p>
   </div>
 
   <hr style="border-top: 1px solid #bbb; width: 80%; margin: 20px auto" />
 
   <div class="container">
+    <h3>Hi, {{ user }}!</h3>
+
     <div class="container">
       {% if not products %}
       <p>Oh no! Sadly, there are no products available at the moment 😔.</p>

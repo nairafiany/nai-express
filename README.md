@@ -348,13 +348,56 @@ Untuk mengimplementasikan checklist di atas, berikut adalah langkah-langkah yang
 ![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 034007.png>)
 ![alt text](<static/images/dokumentasi_postman/Screenshot 2024-09-18 034017.png>)
 
-# Jawaban Pertanyaan Tugas 2
+# Jawaban Pertanyaan Tugas 4
 
 ## Pertanyaan 1
 
 _Apa perbedaan antara HttpResponseRedirect() dan redirect()_
 
 Jawaban :
+Dalam pengembangan web dengan Django, kedua fungsi ini digunakan untuk mengarahkan pengguna ke halaman yang berbeda setelah suatu aksi dilakukan. Namun, terdapat beberapa perbedaan penting di antara keduanya:
+
+`HttpResponseRedirect()`
+
+- **Asal** :
+
+  Berasal dari library Django `django.http`
+
+- **Fungsi Utama** :
+
+  Mengarahkan user ke URL tertentu setelah suatu aksi dilakukan.
+
+- **Kontrol** :
+
+  Memberikan kontrol penuh atas semua aspek respons redirect, termasuk status HTTP (302 Moved Temporarily atau 301 Moved Permanently), header tambahan, dan URL tujuan.
+
+- **Penggunaan** :
+
+  Digunakan ketika perlu kustomisasi secara detail mengenai bagaimana redirect terjadi. Contohnya adalah ketika perlu untuk mengatur status HTTP khusus atau menambahkan header tertentu.
+
+`redirect()`
+
+- **Asal**:
+
+  Berasal dari library `django.shortcuts`
+
+- **Fungsi Utama** :
+
+  Digunakan untuk mengarahkan pengguna ke URL tertentu.
+
+- **Kontrol** :
+
+  `redirect()` secara otomatis membuat instance HttpResponseRedirect dengan mengambil input yang diberikan, seperti URL, nama view, atau objek model, dan mengelola redirect dengan status HTTP default 302.
+
+- **Penggunaan** :
+  redirect() digunakan untuk kemudahan dan fleksibilitas, mengurangi boilerplate code, dan menangani berbagai jenis input tanpa perlu penanganan manual. Ini adalah pilihan yang lebih praktis untuk kasus-kasus umum di mana kustomisasi khusus tidak diperlukan.
+
+Kesimpulannya adalah, `HttpResponseRedirect()` memberikan **kontrol lebih detail**, sedangkan `redirect()` menawarkan **kemudahan dan fleksibilitas** dengan mengotomatisasi beberapa langkah dalam proses redirect.
+
+References:
+
+https://www.geeksforgeeks.org/django-redirects/
+https://docs.djangoproject.com/en/5.1/intro/tutorial04/
 
 ## Pertanyaan 2
 
@@ -362,11 +405,56 @@ _Jelaskan cara kerja penghubungan model MoodEntry dengan User!_
 
 Jawaban :
 
+Di dalam model, ada relasi `ForeignKey` yang menghubungkan setiap produk dengan satu pengguna (`User`). Jadi, setiap produk yang dibuat dalam aplikasi ini dimiliki atau dikelola oleh satu pengguna tertentu.
+
+- Relasi `ForeignKey`:
+
+```
+user = models.ForeignKey(User, on_delete=models.CASCADE)
+```
+
+Relasi ini menghubungkan model MoodEntry dengan model `User`, artinya setiap produk yang dibuat dikaitkan dengan pengguna tertentu. `on_delete=models.CASCADE` berarti jika pengguna dihapus, semua produk yang terkait dengan pengguna tersebut juga akan ikut dihapus dari database.
+
+- Pada views.py, di fungsi `show_main`:
+
+  Pada baris `mood_entries = MoodEntry.objects.filter(user=request.user)` , query ini digunakan untuk mengambil semua entri suasana hati yang terkait dengan pengguna yang sedang login (`request.user`). Ini menunjukkan bagaimana relasi ForeignKey digunakan untuk menghubungkan data MoodEntry dengan pengguna yang membuat entri tersebut.
+
+- Pada views.py, di fungsi `create_mood_entry`:
+
+  Di sini, setelah form valid, entri suasana hati baru dibuat dan dikaitkan dengan pengguna yang sedang login melalui mood_entry.user = request.user. Ini memastikan bahwa entri yang baru dibuat terhubung dengan pengguna yang membuatnya.
+
+Relasi ForeignKey antara `MoodEntry` dan `User` memungkinkan setiap entri suasana hati dikaitkan dengan satu pengguna tertentu. Ini sangat berguna dalam aplikasi, karena memungkinkan pengambilan, penyimpanan, dan pengelolaan data entri suasana hati yang spesifik untuk setiap pengguna. Implementasi relasi ini dapat dilihat dalam view `show_main` dan `create_mood_entry`, di mana data entri suasana hati diambil dan disimpan sesuai dengan pengguna yang sedang login.
+
 ## Pertanyaan 3
 
 _Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut._
 
 Jawaban :
+Perbedaan antara Authentication dan Authorization:
+
+- **Authentication** (Autentikasi) adalah proses untuk memverifikasi identitas seorang pengguna. Artinya, memastikan bahwa seseorang adalah benar-benar siapa yang mereka klaim. Dalam konteks login, ini biasanya melibatkan verifikasi kredensial seperti username dan password.
+- **Authorization** (Otorisasi) adalah proses yang terjadi setelah autentikasi, yang menentukan tingkat akses pengguna. Ini berhubungan dengan pemberian izin kepada pengguna untuk mengakses sumber daya atau melakukan tindakan tertentu berdasarkan tingkat akses yang telah diberikan kepada mereka.
+
+Proses yang terjadi saat _user_ melakukan login :
+
+Saat pengguna login, Django pertama-tama melakukan autentikasi dengan memverifikasi kredensial yang dimasukkan oleh pengguna (seperti username dan password). Jika autentikasi berhasil, Django kemudian mengelola otorisasi untuk menentukan hak akses pengguna tersebut di aplikasi. Misalnya, Django akan menentukan apakah pengguna tersebut memiliki hak untuk mengakses halaman tertentu, atau melakukan tindakan spesifik berdasarkan peran dan izin yang telah ditetapkan.
+
+Implementasi Authentication dan Authorization di Django :
+
+1. Authentication
+
+- Sistem autentikasi bawaan Django terdapat pada modul `django.contrib.auth`. Proses ini melibatkan pengecekkan username dan password terhadap data yang ada di database.
+- Fungsi `authenticate()` digunakan untuk memverifikasi kredensial pengguna. Jika valid, fungsi ini mengembalikan objek `User`, yang kemudian dapat digunakan untuk melakukan login dengan fungsi `login()`.
+
+2. Authorization
+
+- Django mengelola otorisasi menggunakan peran dan izin yang terhubung dengan objek User dan Group. Misalnya, pengguna dapat diberikan izin spesifik seperti can_add, can_edit, atau can_delete untuk model tertentu.
+- Django juga menyediakan decorator seperti @login_required
+
+References :
+
+https://www.fortinet.com/de/resources/cyberglossary/authentication-vs-authorization#:~:text=Authentication%20is%20a%20process%20to,access%20based%20on%20that%20level.
+https://docs.djangoproject.com/en/5.1/topics/auth/default/
 
 ## Pertanyaan 4
 
@@ -374,8 +462,54 @@ _Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain da
 
 Jawaban :
 
+Bagaimana Django Mengingat Pengguna yang Telah Login:
+
+- Django menggunakan sessions dan middleware untuk mengintegrasikan sistem autentikasi ke dalam objek request. Ketika pengguna login, Django membuat sesi yang dihubungkan dengan pengguna, menyimpan ID sesi di server, dan mengirimkan ID tersebut ke browser pengguna melalui cookie.
+
+Django menambahkan atribut request.user ke setiap request, yang merepresentasikan pengguna saat ini. Jika pengguna belum login, request.user akan menjadi instance AnonymousUser. Jika pengguna sudah login, atribut ini akan menjadi instance User.
+Dengan cara ini, Django mengingat pengguna yang telah login pada setiap permintaan berikutnya, selama sesi aktif dan cookie sesi valid.
+
+Kegunaan Lain dari Cookies:
+
+1. Menyimpan Preferensi Pengguna: Seperti bahasa atau pengaturan tampilan.
+
+2. Pelacakan Aktivitas Pengguna: Membantu pengiklan menargetkan iklan berdasarkan perilaku pengguna.
+
+3. Menyimpan Data Keranjang Belanja: Menyimpan item di keranjang belanja dalam situs e-commerce.
+
+Apakah Semua Cookies Aman Digunakan?
+
+Tidak semua cookies aman. Meskipun cookies itu sendiri tidak berbahaya, mereka bisa disalahgunakan jika dicuri. Penyerang dapat mengambil alih sesi pengguna atau mencuri informasi pribadi. Oleh karena itu, cookies harus dikelola dengan benar, misalnya menggunakan atribut Secure dan HttpOnly.
+
+Reference :
+https://docs.djangoproject.com/en/5.1/topics/auth/default/#:~:text=Django%20uses%20sessions%20and%20middleware,which%20represents%20the%20current%20user.
+
+https://www.geeksforgeeks.org/django-cookie/
+
+https://blog.sucuri.net/2023/01/what-are-cookies-a-short-guide-to-managing-your-online-privacy.html#:~:text=Brave-,Can%20cookies%20be%20harmful%3F,otherwise%20abuse%20your%20cookie%20data.
+
 ## Pertanyaan 5
 
 _Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)._
 
 Jawaban :
+
+1. Membuat Fungsi dan From Registrasi
+   Pada views.py saya menambahkan import `UserCreationForm` dan `messages` pada bagian paling atas.
+2. Menambah fungsi register pada `views.py`.
+   Fungsi register ditambahkan pada views.py untuk memungkinkan pengguna membuat akun baru. Fungsi ini memanfaatkan UserCreationForm, sebuah form bawaan Django yang dirancang untuk memudahkan pembuatan akun pengguna.
+3. Membuat `register.html` pada direktori `main/templates`.
+4. Membuat fungsi login pada `views.py`.
+   Fungsi login_user ditambahkan pada views.py untuk memungkinkan pengguna yang sudah terdaftar melakukan login ke dalam aplikasi. Fungsi ini menggunakan `AuthenticationForm`, sebuah form bawaan Django yang dirancang untuk menangani autentikasi pengguna.
+5. Membuat `login.html` pada direktori `main/templates`.
+6. Membuat fungsi logout pada `views.py`.
+   Fungsi logout_user ditambahkan pada views.py untuk memungkinkan pengguna keluar dari sesi login mereka. Fungsi ini menggunakan logout dari Django untuk mengakhiri sesi pengguna yang sedang login.
+7. Menambahkan button Logout di main.html yang mengeksekusi logout dengan _hyperlink_ tag
+8. Menambah path url ke `urlpatterns` untuk mengakses fungsi register, login, dan logout yang baru saja dibuat
+
+9. Menambahkan Cookie `last_login` pada Fungsi `login_user `jika `form.is_valid()`
+   Dengan menambahkan cookie last_login, situs dapat menyimpan informasi tentang kapan pengguna terakhir kali login, yang bisa digunakan untuk berbagai keperluan, seperti menampilkan pesan "Sesi terakhir login" di halaman utama.
+
+10. Menambahkan Potongan Kode`'last_login': request.COOKIES['last_login']` Pada Fungsi `show_main`
+
+11. Ubah Fungsi logout_user untuk Menambahkan Cookie
