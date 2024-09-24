@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b-wnwi5&=lv5ou@)u-4l&-*807=q+8uzd$tsmwvqjzf62!n=zo'
 
 PRODUCTION = os.getenv("PRODUCTION", False)
-# DEBUG = not PRODUCTION
+DEBUG = not PRODUCTION
 
 
 
