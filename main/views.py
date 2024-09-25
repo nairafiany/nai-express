@@ -29,14 +29,17 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
+
 def create_product(request):
     if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()  
+            product = form.save(commit=False)  
+            product.user = request.user  
+            product.save() 
             return redirect('main:show_main') 
         else:
-            return render(request, "create_product.html", {'form':form})
+            return render(request, "create_product.html", {'form': form})
     else:
         form = ProductForm()
 
