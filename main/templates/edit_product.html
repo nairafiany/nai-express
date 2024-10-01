@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container-fluid py-5">
+  <div class="pricing-header px-3 py-3 mx-auto text-center">
+    <div class="service-header px-3 py-3 mx-auto text-center">
+      <h1 class="h3">{% if product.id %} Edit Your Product {% else %} Add Your Product {% endif %}</h1>
+      <p class="lead">Please, fill in the forms</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h4 class="mb-3">Product Information</h4>
+
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <div class="mb-3">
+            <label for="name">Product Name</label>
+            {{ form.name.errors }}
+            {{ form.name }}
+          </div>
+
+          <div class="mb-3">
+            <label for="description">Description</label>
+            {{ form.description.errors }}
+            {{ form.description }}
+          </div>
+
+          <div class="mb-3">
+            <label for="price">Price</label>
+            {{ form.price.errors }}
+            {{ form.price }}
+          </div>
+
+          <div class="mb-3">
+            <label for="stock">Stock</label>
+            {{ form.stock.errors }}
+            {{ form.stock }}
+          </div>
+
+          <div class="mb-3">
+            <label for="image">Product Image</label>
+            {{ form.image.errors }}
+            {{ form.image }}
+          </div>
+
+          <div class="mb-3">
+            <label for="availability">Availability</label>
+            {{ form.availability.errors }}
+            {{ form.availability }}
+          </div>
+
+          <div class="mb-3">
+            <label for="discount">Discount (%)</label>
+            {{ form.discount.errors }}
+            {{ form.discount }}
+          </div>
+
+          <button class="btn btn-lg btn-block mb-4" type="submit">
+            Edit Product
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

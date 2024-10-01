@@ -1,9 +1,9 @@
 from django.urls import path
 from main import views
-from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+from main.views import edit_product, show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
 from django.conf.urls.static import static
 from django.conf import settings
-from main.views import register, login_user, logout_user
+from main.views import register, login_user, logout_user, delete_product
 
 app_name = 'main'
 
@@ -18,6 +18,9 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
+    path('edit-product/<uuid:id>', edit_product, name='edit_product'),
+    path('delete/<uuid:id>', delete_product, name='delete_product'),
+
 
 ]
 

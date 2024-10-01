@@ -513,3 +513,239 @@ Jawaban :
 10. Menambahkan Potongan Kode`'last_login': request.COOKIES['last_login']` Pada Fungsi `show_main`
 
 11. Ubah Fungsi logout_user untuk Menambahkan Cookie
+
+
+# Jawaban Pertanyaan Tugas 5
+
+## Pertanyaan 1
+
+_Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut_
+
+Jawaban : 
+
+Dalam CSS, prioritas pengambilan selector untuk suatu elemen HTML ditentukan oleh **spesifisitas**. Berikut adalah urutan prioritas yang diikuti:
+
+
+1. Inline Style: 
+
+   Inline style memiliki prioritas tertinggi. Ini adalah style yang dituliskan langsung di dalam atribut style dari elemen HTML. 
+   Contoh: 
+      ```
+      <p style="color: red;">
+   ```
+2. ID Selector
+
+   Selector ID memiliki prioritas lebih tinggi dibandingkan selector class atau element. ID ditulis dengan tanda # diikuti nama .
+
+   Contoh : 
+   ```
+   #header {
+    color: blue;
+    }
+   ```
+3. Class Selector, Pseudo-class dan Attribute Selector
+   
+   Selector class (ditandai dengan .), pseudo-class (misalnya :hover), dan attribute (misalnya [type="text"]) memiliki prioritas di bawah ID.
+
+   Contoh :
+   ```
+   .container{
+      background-color: yellow;
+   }, 
+   .container:hover(
+      background-color: green;
+   ), input[type="text"]{
+      border: 1px solid black;
+   }
+   ```
+
+4. Element dan Pseudo-element Selector
+
+   Selector elemen (misalnya p, div, h1) dan pseudo-element (misalnya ::before, ::after) memiliki prioritas terendah. Jika tidak ada selector lain yang lebih spesifik, maka selector elemen akan digunakan.
+
+   Contoh : 
+   ```
+   p {
+      color: black;
+   }
+
+   ::after {
+      content: " - This is a paragraph.";
+   }
+   ```
+5. Urutan Deklarasi
+   
+   Jika dua atau lebih selector memiliki prioritas yang sama, maka deklarasi yang terakhir dalam kode CSS akan digunakan. Ini dikenal sebagai "cascading" dalam CSS.
+
+   ```
+   .example {
+      color: red; <!-- Ini akan diabaikan -->
+   }
+
+   .example {
+      color: blue; <!-- Ini yang akan digunakan -->
+   }
+6. Penggunaan !important
+
+   Penggunaan !important pada suatu deklarasi akan membuatnya memiliki prioritas tertinggi, kecuali jika ada deklarasi lain dengan !important yang lebih spesifik. Namun, penggunaan !important sebaiknya dihindari karena dapat menyebabkan kesulitan dalam debugging dan memperburuk struktur kode CSS.
+
+   ```
+   p {
+      color: red !important; <!-- Ini akan digunakan, kecuali ada deklarasi lain dengan !important yang lebih spesifik --></p>
+   }
+
+Referensi : 
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+
+https://www.getfishtank.com/blog/css-specificity-hierarchy
+
+## Pertanyaan 2
+
+_Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!_
+
+Jawaban : 
+
+Jawaban yang lebih baik mengenai pentingnya responsive design dapat dijelaskan sebagai berikut:
+
+Responsive design adalah konsep penting dalam pengembangan aplikasi web karena memungkinkan website untuk menyesuaikan tampilan dan fungsionalitasnya secara otomatis sesuai dengan ukuran layar perangkat yang digunakan, seperti smartphone, tablet, atau desktop. Hal ini sangat penting karena:
+
+1. Pengalaman Pengguna yang Optimal: Dengan responsive design, pengguna dapat mengakses web tanpa perlu melakukan pengguliran, memperbesar, atau mengecilkan tampilan. Navigasi menjadi lebih mudah, dan pengguna mendapatkan pengalaman yang lebih baik di semua perangkat.
+
+2. Efisiensi Pengembangan: Dengan menggunakan satu desain yang fleksibel untuk semua perangkat, pengembang dapat menghemat waktu dan biaya dibandingkan harus membuat versi terpisah untuk berbagai perangkat.
+
+3. Peningkatan SEO: Google dan mesin pencari lainnya memberikan peringkat lebih tinggi pada website yang responsif. Hal ini dapat meningkatkan visibilitas website di hasil pencarian.
+
+4. Fleksibilitas dalam Penggunaan: Pengguna cenderung lebih memilih aplikasi web yang dapat diakses dengan mudah dari perangkat apa pun, baik di rumah menggunakan laptop atau saat bepergian menggunakan ponsel.
+
+
+Contoh Aplikasi yang Sudah Menerapkan Responsive Design:
+* Netflix: Tampilan dan fungsi yang menyesuaikan dengan perangkat apapun, baik ponsel, tablet, laptop, atau TV.
+* Spotify: Menawarkan pengalaman pengguna yang konsisten di berbagai perangkat.
+* Google: Mesin pencari yang dirancang untuk berfungsi optimal di semua ukuran layar.
+* Instagram: Menyediakan akses yang baik di ponsel maupun desktop.
+
+Contoh Aplikasi yang Belum Menerapkan Responsive Design:
+
+
+* Situs web pemerintah yang lebih lama: Beberapa situs web pemerintah yang belum diperbarui sering kali tidak memiliki tampilan yang responsif, sehingga tampilannya tidak optimal di perangkat seluler atau tablet.
+Contoh : 
+https://dequeuniversity.com/library/responsive/1-non-responsive
+
+Referensi :
+
+https://www.webfx.com/web-design/learn/why-responsive-design-important/#:~:text=Responsive%20design%20can%20help%20you,your%20rankings%20in%20search%20engines.
+
+## Pertanyaan 3
+
+_Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!_
+
+Jawaban : 
+
+* Margin
+   
+   Margin adalah ruang di luar batas elemen, di antara elemen tersebut dan elemen lain di sekitarnya. Margin digunakan untuk mengatur jarak antara elemen-elemen di halaman web.
+
+   Contoh Implementasi Margin:
+   ```
+   .box \{ \
+   margin: 10px; /* Mengatur margin di semua sisi elemen */\
+   margin-top: 20px; /* Mengatur margin atas elemen */\
+   ```
+* Border
+
+   Border adalah garis yang mengelilingi elemen. Border digunakan untuk memberikan batas visual pada elemen dan memisahkannya dari elemen lain di sekitarnya. Border dapat memiliki lebar, warna, dan gaya yang berbeda-beda.\
+
+   Contoh Implementasi Border:
+   ```
+   .box \{ \
+   border: 2px solid black; /* Mengatur border dengan lebar 2px, gaya solid, dan warna hitam */\
+   ```
+* Padding
+   
+   Padding adalah ruang di dalam batas elemen, di antara batas elemen dan kontennya. Padding digunakan untuk mengatur jarak antara batas elemen dan kontennya, sehingga konten tidak menyentuh batas elemen. Padding juga dapat memiliki nilai yang berbeda-beda untuk setiap sisi elemen.
+
+   Contoh Implementasi Padding:
+
+   ```
+   .box \{ \
+   padding: 15px; /* Mengatur padding di semua sisi elemen */\
+   padding-left: 25px; /* Mengatur padding kiri elemen */\
+   ```
+
+Referensi :
+
+https://www.digitalocean.com/community/tutorials/how-to-adjust-the-content-padding-border-and-margins-of-an-html-element-with-css
+
+https://www.w3schools.com/css/css_boxmodel.asp
+
+## Pertanyaan 4
+
+_Jelaskan konsep flex box dan grid layout beserta kegunaannya!_
+
+Jawaban :
+
+Flex Box
+
+Flexbox adalah model tata letak satu dimensi yang digunakan untuk mendistribusikan ruang antara item dalam sebuah kontainer, baik dalam bentuk baris (row) atau kolom (column). Flexbox memiliki sumbu utama (main axis) yang ditentukan oleh properti flex-direction dan sumbu silang (cross axis) yang tegak lurus dengan sumbu utama. Flexbox mempermudah penataan, penjajaran, dan distribusi ruang di antara item.
+
+Konsep utama:
+
+* flex-direction: Menentukan arah utama (baris atau kolom).
+* flex-wrap: Mengizinkan item membungkus ke beberapa baris.
+* flex-grow, flex-shrink, flex-basis: Mengontrol bagaimana item berkembang, mengecil, atau dasar ukurannya sesuai dengan ruang yang tersedia.
+
+Grid Layout adalah model tata letak dua dimensi dalam CSS yang memungkinkan pengaturan tata letak yang lebih kompleks dengan baris dan kolom. Dengan Grid Layout, pengembang dapat dengan mudah mengatur posisi dan ukuran elemen di dalam sebuah kontainer berdasarkan sistem koordinat dua dimensi, membuat tata letak lebih presisi dan responsif.
+
+Konsep Utama Grid Layout:
+
+* Baris dan Kolom: Sistem grid terdiri dari baris (row) dan kolom (column), yang membentuk area di mana item dapat ditempatkan.
+* Grid Lines: Garis-garis yang memisahkan kolom dan baris digunakan untuk menempatkan elemen di posisi tertentu.
+* Grid Gap: Mengatur jarak antara baris dan kolom.
+* Responsive: Grid memungkinkan tata letak yang fleksibel dan mudah diubah agar sesuai dengan berbagai ukuran layar.
+* Grid Layout sangat membantu dalam mengatur tata letak halaman web yang rumit seperti halaman dashboard, galeri gambar, atau struktur konten yang memerlukan kontrol lebih detail atas posisi elemen.
+
+## Pertanyaan 5
+
+_Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!_
+
+Jawaban :
+1. Menambahkan Bootstrap ke Aplikasi dengan cara 
+   * Menambahkan link Bootstrap CSS dan JS ke dalam file HTML di bagian head dan sebelum tag penutup body.
+2. Menambah Fitur edit_product pada aplikasi
+   ```
+   def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('main:show_main'))
+    else:
+        form = ProductForm(instance=product)
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+   ```
+3. Membuat berkas HTML baru dengan nama `edit_product.html` di dalam folder templates dan menambahkan form yang diperlukan untuk mengedit produk. Form ini akan menggunakan Django Forms untuk memvalidasi input pengguna dan menyimpan perubahan ke dalam model Product.
+4. Menambahkan tombol edit pada halaman main.html dan menghubungkannya dengan URL yang sesuai untuk mengedit produk tersebut. Tombol ini akan mengarahkan pengguna ke halaman edit_product.html yang telah dibuat sebelumnya.
+5. Menambahkan fitur hapus product pada aplikasi 
+   ```
+   def delete_product(request, id):
+    product = Product.objects.get(pk = id);
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+   ```
+
+6. Menambahkan path url ke dalam `urlpatterns` di dalam `urls.py` untuk mengakses fitur hapus produk. Path ini akan mengarahkan ke fungsi `delete_product` yang telah dibuat sebelumnya. Path ini akan menerima parameter `id` yang digunakan untuk mengidentifikasi produk yang akan dihapus.
+
+7. Membuat *Navigation Bar* pada Aplikasi dengan cara membuat berkas `navbar.html` di dalam folder templates dan menambahkan elemen-elemen navigasi yang diperlukan, seperti tombol-tombol untuk berpindah antara halaman utama, tambah produk, dan logout. Elemen-elemen navigasi ini akan diatur menggunakan Bootstrap untuk tampilan yang responsif dan menarik. Navigation bar ini kemudian akan di-include di dalam setiap halaman HTML yang diperlukan.
+
+8. Konfigurasi static files dengan cara menambahkan middleware WhiteNoise
+9. Membuat styles.css untuk mengatur tampilan aplikasi dengan cara menambahkan file CSS baru di dalam folder static dan menambahkan kode CSS yang diperlukan untuk mengatur tampilan halaman utama, tambah produk, dan edit produk. File CSS ini kemudian akan di-include di dalam setiap halaman HTML yang diperlukan.
+
+10. Melakukan styling halaman login, registrasi, main, tambah produk, dan edit produk.
+
+11. Membuat card_product.html untuk menampilkan kartu produk dengan cara membuat berkas HTML baru di dalam folder templates dan menambahkan elemen-elemen yang diperlukan untuk menampilkan informasi produk, seperti gambar, nama, harga, deskripsi, dan tombol-tombol untuk mengedit atau menghapus produk. Kartu produk ini kemudian akan di-include di dalam halaman utama dan halaman tambah produk untuk menampilkan daftar produk yang ada.

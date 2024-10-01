@@ -35,29 +35,11 @@
 
   <body>
     <!-- Navigation Bar -->
-    <nav class="site-header sticky-top py-1">
-      <div
-        class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
-      >
-        <a class="py-2 d-flex align-items-center" href="#">
-          <img
-            src="{% static 'images/shopping.png' %}"
-            alt="Shopping Icon"
-            width="24"
-            height="24"
-            class="d-block mx-auto"
-          />
-          <span class="py-2 ml-2 font-weight-bold text-white">Nai Express</span>
-        </a>
-      </div>
-    </nav>
 
     <!-- Main content block (for child templates to fill in content) -->
-    <main class="container">
       {% block content %}
       <!-- Page-specific content will go here -->
       {% endblock content %}
-    </main>
 
     <!-- Footer -->
 

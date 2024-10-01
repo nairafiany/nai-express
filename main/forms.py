@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from main.models import Product
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 class ProductForm(ModelForm):
     class Meta:
@@ -44,3 +45,17 @@ class ProductForm(ModelForm):
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Discount'})
     )
 
+
+class CustomLoginForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email address',
+        })
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Password',
+        })
+    )
