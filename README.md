@@ -749,3 +749,106 @@ Jawaban :
 10. Melakukan styling halaman login, registrasi, main, tambah produk, dan edit produk.
 
 11. Membuat card_product.html untuk menampilkan kartu produk dengan cara membuat berkas HTML baru di dalam folder templates dan menambahkan elemen-elemen yang diperlukan untuk menampilkan informasi produk, seperti gambar, nama, harga, deskripsi, dan tombol-tombol untuk mengedit atau menghapus produk. Kartu produk ini kemudian akan di-include di dalam halaman utama dan halaman tambah produk untuk menampilkan daftar produk yang ada.
+
+
+
+# Jawaban Pertanyaan Tugas 6
+
+## Pertanyaan 1
+
+_Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!_
+
+Jawaban : 
+
+Manfaat JavaScript dalam Pengembangan Aplikasi Web:
+
+
+1. **Interaktivitas dan Pengalaman Pengguna**
+   
+   JavaScript menambahkan interaktivitas pada halaman web, memungkinkan konten dinamis yang merespons tindakan pengguna, seperti klik tombol dan pengisian formulir, serta memberikan umpan balik instan.
+
+2. **Manipulasi DOM**
+   JavaScript memungkinkan pengembang memodifikasi elemen pada halaman secara dinamis, baik itu konten, struktur, maupun gaya, sehingga halaman web dapat berubah sesuai interaksi pengguna.
+
+3. **Pemrograman Asinkron**
+
+   JavaScript mendukung pemrograman asinkron, memungkinkan eksekusi tugas seperti mengambil data dari server tanpa menghentikan fungsi lainnya.
+
+4. **Web API**
+
+   JavaScript menyediakan akses ke API browser yang beragam, seperti akses kamera, lokasi, dan lainnya, untuk menciptakan aplikasi web dengan fitur yang lebih kaya.
+
+5. **Framework dan Library**
+
+   Framework seperti React, Angular, dan Vue.js mempermudah pembuatan antarmuka pengguna, sementara library seperti jQuery menyederhanakan tugas-tugas umum seperti manipulasi DOM.
+
+
+Pengembangan Server-Side
+Dengan Node.js, JavaScript juga dapat digunakan di sisi server, memungkinkan penggunaan bahasa yang sama untuk pengembangan sisi klien dan server.
+
+Referensi : 
+
+https://medium.com/@dhanushkumarsuresh/introduction-to-javascript-and-its-role-in-web-development-8d920aa7b553 
+
+
+## Pertanyaan 2
+
+_Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?_
+
+Jawaban : 
+
+
+`fetch()` adalah fungsi asinkron yang mengirimkan permintaan HTTP dan mengembalikan promise. Setelah permintaan selesai, promise akan di-resolve menjadi objek response yang bisa diolah lebih lanjut (misalnya menjadi JSON, teks, atau Blob).
+
+Penggunaan `await` dalam `fetch() `berguna untuk menunggu hingga response diterima tanpa memblokir eksekusi thread utama. Jadi, kode akan "menunggu" hingga permintaan selesai sebelum melanjutkan. Jika `await` tidak digunakan, `fetch()` akan mengembalikan promise yang harus ditangani menggunakan `.then()`.
+
+Jika kita tidak menggunakan `await`, maka kode berikutnya akan dijalankan sebelum permintaan `fetch() `selesai, sehingga kita tidak bisa langsung mengakses hasilnya.
+
+Referensi :
+
+https://dmitripavlutin.com/javascript-fetch-async-await/
+
+https://blog.stackademic.com/understanding-fetch-with-async-await-5289557d623a
+
+## Pertanyaan 3
+
+_Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?_
+
+Jawaban : 
+
+Penggunaan decorator csrf_exempt pada view dalam Django bertujuan untuk mengecualikan view tersebut dari mekanisme keamanan Cross-Site Request Forgery (CSRF) yang biasanya diaktifkan secara otomatis oleh Django. CSRF adalah perlindungan untuk mencegah permintaan yang tidak sah yang dikirimkan ke server dari sumber lain selain website yang sah, sehingga Django memerlukan token CSRF untuk setiap permintaan POST.
+
+Namun, dalam kasus AJAX POST, sering kali permintaan datang dari sumber yang tidak memiliki token CSRF yang valid, terutama ketika data dikirim melalui API eksternal atau dari aplikasi lain. Dengan menambahkan decorator csrf_exempt, kita memberi tahu Django bahwa view ini tidak memerlukan validasi token CSRF, sehingga bisa menerima permintaan POST tanpa memerlukan token tersebut.
+
+Perlu diingat bahwa penggunaan csrf_exempt harus dilakukan dengan hati-hati karena menonaktifkan perlindungan CSRF dapat membuka potensi celah keamanan jika tidak disertai dengan mekanisme keamanan lainnya. Idealnya, mekanisme keamanan lain seperti token autentikasi atau enkripsi harus digunakan untuk memastikan integritas dan keamanan data.
+
+
+Referensi : 
+
+https://stackoverflow.com/questions/51710145/what-is-csrf-exempt-in-django
+
+
+## Pertanyaan 4
+
+_Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?_
+
+Jawaban : 
+
+1. Keamanan: 
+
+   Data yang dikirimkan dari frontend ke server dapat dimanipulasi oleh pihak luar sebelum sampai ke backend. Dengan membersihkan data di backend, kita melindungi aplikasi dari potensi serangan seperti Cross-Site Scripting (XSS) dan Injection yang dapat mengancam integritas sistem.
+
+2. Konsistensi: 
+
+   Frontend pada setiap perangkat pengguna dapat berbeda-beda (browser, sistem operasi, dll.), yang memungkinkan beberapa aturan validasi di frontend terlewatkan. Dengan memastikan validasi dan pembersihan data di backend, aplikasi dapat menjamin konsistensi data yang masuk, tidak tergantung pada variasi di sisi pengguna.
+
+3. Reliabilitas: 
+
+   Bergantung hanya pada frontend dapat menimbulkan risiko jika pengguna mematikan atau melewati validasi di browser mereka. Pembersihan di backend memastikan bahwa data yang masuk ke sistem sudah divalidasi dengan benar, terlepas dari apa pun yang terjadi di sisi pengguna.
+
+
+## Pertanyaan 5
+
+_Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!_
+
+Jawaban : 

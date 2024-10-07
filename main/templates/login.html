@@ -16,7 +16,7 @@
             </div>
             <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Nai Express</p>
             <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Join Noi!</small>
-        </div> 
+        </div>
 
         <!--------------------------- Right Box ------------------------------>
         <div class="col-md-6 right-box">
@@ -33,7 +33,7 @@
                             <p class="mb-1 fw-bold text-muted">Username</p>
                         </div>
                         <div class="col-12">
-                            {{ form.username }} <!-- Email field -->
+                            {{ form.username }}
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -41,33 +41,52 @@
                             <p class="mb-1 fw-bold text-muted">Password</p>
                         </div>
                         <div class="col-12">
-                            {{ form.password }} <!-- Password field -->
+                            {{ form.password }}
                         </div>
                     </div>
                     <div class="input-group mb-5 d-flex justify-content-between">
-                        {% comment %} <div class="form-check">
+                        <!-- Uncomment if "Remember Me" and "Forgot Password?" features are needed -->
+                        {% comment %}
+                        <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="formCheck">
                             <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
-                        </div> {% endcomment %}
-                        {% comment %} <div class="forgot">
+                        </div>
+                        <div class="forgot">
                             <small><a href="#">Forgot Password?</a></small>
-                        </div> {% endcomment %}
+                        </div>
+                        {% endcomment %}
                     </div>
+                    {% if messages %}
+                    <div class="mt-4">
+                        {% for message in messages %}
+                        {% if message.tags == "success" %}
+                            <div class="alert alert-success" role="alert">
+                                <span>{{ message }}</span>
+                            </div>
+                        {% elif message.tags == "error" %}
+                            <div class="alert alert-danger" role="alert">
+                                <span>{{ message }}</span>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info" role="alert">
+                                <span>{{ message }}</span>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     <div class="input-group mb-3">
                         <input class="btn btn-lg btn-primary w-100 fs-6 btn-login" type="submit" value="Login">
-                        
                     </div>
-                    
                 </form>
 
                 <div class="input-group mb-3">
                     <small>Don't have an account? <a href="{% url 'main:register' %}">Sign Up</a></small>
-
-                
                 </div>
-              
             </div>
         </div>
     </div>
 </div>
+
+
 {% endblock content %}

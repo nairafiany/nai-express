@@ -2,6 +2,8 @@ from django.forms import ModelForm
 from main.models import Product
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django.utils.html import strip_tags
+
 
 class ProductForm(ModelForm):
     class Meta:
@@ -44,6 +46,21 @@ class ProductForm(ModelForm):
         required=False,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Discount'})
     )
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        cleaned_name = strip_tags(name)
+        if not cleaned_name:
+            raise forms.ValidationError("Field name tidak boleh kosong setelah dibersihkan.")
+        return cleaned_name
+
+    def clean_description(self):
+        description = self.cleaned_data.get('description')
+        cleaned_description = strip_tags(description)
+        if not cleaned_description:
+            raise forms.ValidationError("Field description tidak boleh kosong setelah dibersihkan.")
+        return cleaned_description
+    
 
 
 class CustomLoginForm(AuthenticationForm):
