@@ -852,3 +852,19 @@ Jawaban :
 _Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!_
 
 Jawaban : 
+
+
+1. Menambahkan error message pada login.html dan register.html jika terjadi kesalahan saat login atau register.
+2. Membuat fungsi create_product_ajax pada views.py untuk membuat produk baru melalui AJAX POST. 
+3. Tambah path url ke dalam urlpatterns
+4. Menampilkan data produk dengan fetch() API
+5. Mengubah baris pertama views untuk show_json dan show_xml
+6. Menambahkan div dengan id "create_product" pada main.html
+7. Membuat blok script sebelum endblock content
+8. Menambahkan fungsi refreshProducts untuk me-refresh products secara asinkronus
+9. Membuat Modal sebagai form untuk menambahkan produk
+10. Menambahkan fungsi showModal dan hideModal
+11. Mengubah bagian tombol add product untuk melakukan penambahan dengan AJAX
+12. Membuat fungsi baru pada blok script dengan nama addProduct.
+13. Melindungi aplikasi dari XSS dengan menambahkan strip_tags dan menambahkan clean_name dan clean_description pada forms.py
+14. Membersihkan data dengan DOMPurify pada main.html dan menambahkan script untuk DOMPurify di bagian head html.
