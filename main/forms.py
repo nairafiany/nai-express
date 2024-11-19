@@ -32,7 +32,7 @@ class ProductForm(ModelForm):
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Stock'})
     )
     image = forms.ImageField(
-        required=True,
+        required=False,
         widget=forms.FileInput(attrs={'class': 'form-control-file'})
     )
     availability = forms.ChoiceField(

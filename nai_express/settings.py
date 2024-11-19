@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b-wnwi5&=lv5ou@)u-4l&-*807=q+8uzd$tsmwvqjzf62!n=zo'
 
 PRODUCTION = os.getenv("PRODUCTION", False)
-# DEBUG = not PRODUCTION
-DEBUG = True
+DEBUG = not PRODUCTION
+# DEBUG = True
 # ADD ULANG - Ulang
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"] 
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id", "10.0.2.2"] 
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id", "https://naira-shafiqa-naiexpress1.pbp.cs.ui.ac.id"]
 
@@ -39,19 +39,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'authentication',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Tambahkan di sini
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 ROOT_URLCONF = 'nai_express.urls'
 
